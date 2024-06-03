@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const filesRouter = require('./routes/upload.route.js');
+const path = require('path');
 dotenv.config();
 
 const PORT = process.env.PORT || 8080;
@@ -22,6 +23,15 @@ app.use('/', filesRouter);
 
 app.listen(PORT, () => {
     console.log('Up and running on port', PORT);
+});
+
+// Have Node serve the files for our built React app
+// app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+// All other GET requests not handled before will return our React app
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
 });
 
 
