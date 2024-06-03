@@ -16,7 +16,7 @@ const ViewImage = () => {
 
     const fetchImage = async () => {
         try {
-            const res = await axios.get(`http://localhost:8080/getSingleImage/${imageId}`, {
+            const res = await axios.get(`https://final-project-di-24.onrender.com/getSingleImage/${imageId}`, {
                 headers: { 'x-access-token': token },
                 withCredentials: true
             });
@@ -35,7 +35,7 @@ const ViewImage = () => {
     const saveDescription = async () => {
         setLoading(true);
         try {
-            const res = await axios.put(`http://localhost:8080/updateDescription/${imageId}`, {
+            const res = await axios.put(`https://final-project-di-24.onrender.com/updateDescription/${imageId}`, {
                 description: description
             }, {
                 headers: { 'x-access-token': token },

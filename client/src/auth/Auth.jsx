@@ -13,7 +13,7 @@ const Auth = ({ children }) => {
   useEffect(() => {
     const verify = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/verify', {
+        const response = await axios.get('https://final-project-di-24.onrender.com/verify', {
           headers: {
             'x-access-token': token
           },

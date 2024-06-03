@@ -21,7 +21,7 @@ const Dashboard = () => {
 
     const fetchUserImages = async () => {
         try {
-            const res = await axios.get("http://localhost:8080/getUserImage", { 
+            const res = await axios.get("https://final-project-di-24.onrender.com/getUserImage", { 
                 headers: { 'x-access-token': token }, 
                 withCredentials: true 
             });
@@ -47,7 +47,7 @@ const Dashboard = () => {
         // formData.append("description", description);
 
         try {
-            const res = await axios.post("http://localhost:8080/upload-single", formData, {
+            const res = await axios.post("https://final-project-di-24.onrender.com/upload-single", formData, {
                 headers: {
                     'x-access-token': token,
                     "Content-Type": "multipart/form-data"
@@ -62,7 +62,7 @@ const Dashboard = () => {
 
     const handleDelete = async (imageId) => {
         try {
-            await axios.delete(`http://localhost:8080/deleteImage/${imageId}`, {
+            await axios.delete(`https://final-project-di-24.onrender.com/deleteImage/${imageId}`, {
                 headers: { 'x-access-token': token },
                 withCredentials: true
             });
