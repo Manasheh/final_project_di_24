@@ -82,7 +82,7 @@ const Dashboard = () => {
             {/* Upload form */}
             <form onSubmit={handleSubmit}>
                 <input type="file" accept="image/*" onChange={handleFileChange} />
-                {/* <input type="text" placeholder="Enter description" value={description} onChange={handleDescriptionChange} /> */}
+                <input type="text" placeholder="Enter description" value={description} onChange={handleDescriptionChange} />
                 <button type="submit">Upload</button>
             </form>
             {message && <div>{message}</div>}

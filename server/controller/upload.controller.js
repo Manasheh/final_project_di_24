@@ -88,6 +88,12 @@ const getUserImages = async (req, res) => {
 const deleteImage = async (req, res) => {
     try {
         const { id } = req.params;
+        //delete from s3 bucket
+        const s3Params = {
+            Bucket: 'usergallary',
+            Key: id // Assuming 'id' is the unique identifier of the image in your S3 bucket
+        };
+        await s3.send(new DeleteObjectCommand(s3Params));
         const row = await _deleteImage(id);
         res.status(200).json(row);
     } catch (error) {

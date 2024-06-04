@@ -42,9 +42,6 @@ app.get("*", (req, res) => {
 
 
 
-// motzei shabbath 
-
-// there was an error when loggin, it navigate to the dashboard but there was error 
 
 
 
