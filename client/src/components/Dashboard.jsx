@@ -101,7 +101,7 @@ const Dashboard = () => {
                         />
                         <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(image.id)}/>
 
-                        {/* <p>Description: {image.description}</p> */}
+                        <p>Description: {image.description}</p>
                         {/* <button onClick={() => handleDelete(image.id)}>Delete</button>/ */}
                     </div>
                 ))}
