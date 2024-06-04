@@ -11,7 +11,7 @@ const Dashboard = () => {
     const { token } = useContext(AuthContext);
     const [userImages, setUserImages] = useState([]);
     const [file, setFile] = useState(null);
-    // const [description, setDescription] = useState("");
+    const [description, setDescription] = useState("");
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
@@ -35,16 +35,16 @@ const Dashboard = () => {
         setFile(e.target.files[0]);
     };
 
-    // const handleDescriptionChange = (e) => {
-    //     setDescription(e.target.value);
-    // };
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
         formData.append("file", file);
-        // formData.append("description", description);
+        formData.append("description", description);
 
         try {
             const res = await axios.post("https://final-project-di-24.onrender.com/upload-single", formData, {
