@@ -17,7 +17,7 @@ const LoginRegister = ({ page }) => {
     if (page === 'Login') {
       try {
         const response = await axios.post(
-          'http://localhost:8080/login',
+          'https://final-project-di-24.onrender.com/login',
           { email, password },
           { withCredentials: true }
         );
@@ -34,7 +34,7 @@ const LoginRegister = ({ page }) => {
     } else {
       try {
         const response = await axios.post(
-          'http://localhost:/register',
+          'https://final-project-di-24.onrender.com/register',
           { username, email, password },
           { withCredentials: true }
         );

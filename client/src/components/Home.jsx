@@ -15,7 +15,7 @@ const Home = () => {
     try {
       const response = await axios.get('https://final-project-di-24.onrender.com/getUserImage', {
         headers: {
-          'x-access-token': token?.token
+          'x-access-token': token
         },
         withCredentials: true
       });
