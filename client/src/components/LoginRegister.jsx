@@ -17,7 +17,7 @@ const LoginRegister = ({ page }) => {
     if (page === 'Login') {
       try {
         const response = await axios.post(
-          'https://final-project-di-24.onrender.com/login',
+          'http://localhost:8080/login',
           { email, password },
           { withCredentials: true }
         );
@@ -34,7 +34,7 @@ const LoginRegister = ({ page }) => {
     } else {
       try {
         const response = await axios.post(
-          'https://final-project-di-24.onrender.com/register',
+          'http://localhost:/register',
           { username, email, password },
           { withCredentials: true }
         );
@@ -69,7 +69,7 @@ const LoginRegister = ({ page }) => {
           type="email"
           label="Enter Email"
           variant="outlined"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value.toLowerCase())}
         />
         <TextField
           sx={{ m: 1 }}

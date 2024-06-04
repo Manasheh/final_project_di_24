@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../App';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -13,6 +13,7 @@ const Dashboard = () => {
     const [file, setFile] = useState(null);
     const [description, setDescription] = useState("");
     const [message, setMessage] = useState("");
+    const [isPublic, setIsPublic] = useState(false)
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -45,6 +46,7 @@ const Dashboard = () => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("description", description);
+        formData.append("isPublic", isPublic) // Add isPublic to the form data
 
         try {
             const res = await axios.post("https://final-project-di-24.onrender.com/upload-single", formData, {
@@ -77,12 +79,31 @@ const Dashboard = () => {
         navigate(`/image/${imageId}`);
     };
 
+    const handleIsPublicChange = (e) => { 
+        setIsPublic(e.target.checked)
+    }
+
+    
+  const handleDownload = async (imageUrl) => {
+    try {
+      // Make a GET request to the image URL to download it
+      const response = await axios.get(imageUrl, {
+        responseType: 'blob' // Set responseType to 'blob' to download binary data
+      });
+      // Use FileSaver.js to save the blob as a file
+      saveAs(response.data, 'image.jpg');
+    } catch (error) {
+      console.log('Error downloading image:', error);
+    }
+  };
     return (
         <div>
             {/* Upload form */}
             <form onSubmit={handleSubmit}>
                 <input type="file" accept="image/*" onChange={handleFileChange} />
                 <input type="text" placeholder="Enter description" value={description} onChange={handleDescriptionChange} />
+                <input type="checkbox" checked={isPublic} onChange={handleIsPublicChange} />
+                <label htmlFor="isPublic">Public</label>
                 <button type="submit">Upload</button>
             </form>
             {message && <div>{message}</div>}
@@ -100,7 +121,7 @@ const Dashboard = () => {
                             
                         />
                         <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(image.id)}/>
-
+                        <FontAwesomeIcon icon= {faDownload} onClick={() => handleDownload(image.image_url)}/>
                         <p>Description: {image.description}</p>
                         {/* <button onClick={() => handleDelete(image.id)}>Delete</button>/ */}
                     </div>

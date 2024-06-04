@@ -13,6 +13,8 @@ const Auth = ({ children }) => {
   useEffect(() => {
     const verify = async () => {
       try {
+
+        // was localhost://5173/verify before
         const response = await axios.get('https://final-project-di-24.onrender.com/verify', {
           headers: {
             'x-access-token': token
