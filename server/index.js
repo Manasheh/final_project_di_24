@@ -10,8 +10,10 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 // Middleware
+//https://final-project-di-24.onrender.com
+
 app.use(cors({
-    origin: 'https://final-project-di-24.onrender.com',
+    origin: 'http://localhost:5173',
     credentials: true
 }));
 app.use(express.json()); // Add this to parse JSON bodies

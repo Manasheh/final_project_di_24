@@ -27,14 +27,14 @@ const uploadFile = async (req, res) => {
         return res.status(400).json({ message: 'No file uploaded' });
     }
     const { key, mimetype, location, originalname } = req.file;
-    const { description } = req.body;
+    const { description, isPublic } = req.body;
     
     // Ensure userId is available in the request object
     const userId = req.userId; // Assuming userId is added by the verifyToken middleware
     
     try {
         // Pass userId to _uploadSingle function
-        const row = await _uploadSingle({ key, mimetype, location, originalname, description, userId });
+        const row = await _uploadSingle({ key, mimetype, location, originalname, description, userId, isPublic});
         res.status(200).json(row);
     } catch (error) {
         console.error('Error uploading file:', error);
@@ -63,8 +63,8 @@ const getSingleImage = async (req, res) => {
 const updateDescription = async (req, res) => {
     try {
         const { id } = req.params;
-        const { description } = req.body;
-        const row = await _updateDescription(id, description);
+        const { description, isPublic } = req.body;  //include isPublic in the request body
+        const row = await _updateDescription(id, description, isPublic); // Update description and isPublic
         res.status(200).json(row);
     } catch (error) {
         console.error('Error updating description:', error);
@@ -89,11 +89,11 @@ const deleteImage = async (req, res) => {
     try {
         const { id } = req.params;
         //delete from s3 bucket
-        const s3Params = {
-            Bucket: 'usergallary',
-            Key: id // Assuming 'id' is the unique identifier of the image in your S3 bucket
-        };
-        await s3.send(new DeleteObjectCommand(s3Params));
+        // const s3Params = {
+        //     Bucket: 'usergallary',
+        //     Key: 
+        // };
+        // await s3.send(new DeleteObjectCommand(s3Params));
         const row = await _deleteImage(id);
         res.status(200).json(row);
     } catch (error) {
@@ -101,6 +101,40 @@ const deleteImage = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+// will work on the s3 delete late //
+// const extractKeyFromImageUrl = (imageUrl) => {
+//     // Implement logic to extract key from image URL
+//     // For example, if the URL is in the format 'https://example.com/images/image123.jpg',
+//     // you might extract 'image123.jpg' as the key
+//     const parts = imageUrl.split('/');
+//     return parts[parts.length - 1];
+// };
+
+
+
+// const deleteImage = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const image = await _getSingleImage(id); // Retrieve image data from the database
+//         console.log(image)
+//         if (!image) {
+//             return res.status(404).json({ message: 'Image not found' });
+//         }
+        
+//         const s3Params = {
+//             Bucket: 'usergallary',
+//             Key: extractKeyFromImageUrl(image.image_url) // Assuming there's a function to extract key from image URL
+//         };
+//         await s3.send(new DeleteObjectCommand(s3Params));
+        
+//         const row = await _deleteImage(id);
+//         res.status(200).json(row);
+//     } catch (error) {
+//         console.error('Error deleting image:', error);
+//         res.status(500).json({ message: 'Internal Server Error' });
+//     }
+// };
+
 
 // Register User
 const register = async (req, res) => {

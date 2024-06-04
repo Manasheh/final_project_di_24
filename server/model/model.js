@@ -12,7 +12,7 @@ const { db } = require('../config/config.js');
 //     }
 // }
 
-const _uploadSingle = async ({ key, mimetype, location, originalname, description, userId }) => {
+const _uploadSingle = async ({ key, mimetype, location, originalname, description, userId, isPublic }) => {
     try {
         const [row] = await db('images')
             .insert(
@@ -20,10 +20,10 @@ const _uploadSingle = async ({ key, mimetype, location, originalname, descriptio
                     user_id: userId,
                     image_url: location,
                     description: description || '',  // Use provided description or default to an empty string
-                    
+                    isPublic: isPublic || false,  // Use provided isPublic or default to false
                     uploaded_at: new Date(),
                 },
-                ['id', 'user_id', 'image_url', 'description', 'uploaded_at']  // Returning these fields after insertion
+                ['id', 'user_id', 'image_url', 'description', 'uploaded_at', 'isPublic']  // Returning these fields after insertion
             );
         return row;
     } catch (error) {
@@ -46,9 +46,10 @@ const _getSingleImage = async (id) => {
 
 
 //update description
-const _updateDescription = async (id, description) => {
+const _updateDescription = async (id, description, isPublic) => {
     try {
-        const [row] = await db('images').where({ id }).update({ description }, ['id', 'description']);
+        const [row] = await db('images').where({ id }).update({ description, isPublic }, ['id', 'description', 'isPublic']);
+        console.log(isPublic);
         return row;
     } catch (error) {
         console.error('Error updating description:', error);
@@ -58,7 +59,7 @@ const _updateDescription = async (id, description) => {
 const _getUserImages = async (userId) => {
     try {
         //fetch image associated with the user id
-        const rows  = await db('images').select('id', 'image_url', 'description').where({user_id: userId});
+        const rows  = await db('images').select('id', 'image_url', 'description', 'isPublic').where({user_id: userId});
         return rows;
     } catch (error) {
         console.error('Error getting images:', error);  // Log the error
