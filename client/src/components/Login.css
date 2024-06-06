@@ -1,5 +1,5 @@
 .loginRegister {
-  min-height: 100vh;
+  /* min-height: vh; */
 }
 
 @media only screen and (max-width: 420px) {
