@@ -21,29 +21,29 @@ function Footer() {
             <div className="footer">
               <div className="social-container">
                 <a href="#">
-                  <img src="../../public/images/facebook.svg" alt="" />
+                  <img src="https://img.icons8.com/?size=100&id=118467&format=png&color=000000" alt="" />
                 </a>
               </div>
               <div className="social-container">
                 <a href="#">
-                  <img src="../../public/images/instagram.svg" alt="" />
+                  <img src="https://img.icons8.com/?size=100&id=32309&format=png&color=000000" alt="" />
                 </a>
               </div>
               <div className="social-container">
                 <a
                   href="https://www.linkedin.com/in/menashe-vaiphei-924476119/"
                 >
-                  <img src="../../public/images/linkedin.svg" alt="" />
+                  <img src="https://img.icons8.com/?size=100&id=8808&format=png&color=000000" alt="" />
                 </a>
               </div>
               <div className="social-container">
                 <a href="#">
-                  <img src="../../public/images/youtube-color.svg" alt="" />
+                  <img src="https://img.icons8.com/?size=100&id=55200&format=png&color=000000" alt="" />
                 </a>
               </div>
               <div className="social-container">
                 <a href="https://github.com/Manasheh/portfolio">
-                  <img src="../../public/images/icons8-github.svg" alt="" />
+                  <img src="https://img.icons8.com/?size=100&id=12599&format=png&color=000000" alt="" />
                 </a>
               </div>
             </div>

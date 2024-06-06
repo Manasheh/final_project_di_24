@@ -55,7 +55,7 @@ const LoginRegister = ({ page }) => {
   };
 
   return (
-    <div>
+    <div className='loginRegister'>
       <h2 className='heading'>{page}</h2>
       <Container>
         <Form>
