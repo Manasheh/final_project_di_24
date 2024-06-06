@@ -1,7 +1,7 @@
 /* home page  */
 body {
   min-height: 100vh;
-  
+
 }
 .home-container {
   width: 100%;
@@ -100,4 +100,12 @@ body {
 
 .download-button-container {
   margin-top: 10px;
+}
+
+
+/* app container  */
+
+.body-container {
+  min-height: 100vh;
+  position: relative;
 }
