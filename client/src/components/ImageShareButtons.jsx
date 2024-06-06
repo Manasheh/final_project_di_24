@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from 'react-bootstrap/Button';
 const ImageShareButtons = ({ imageUrl }) => {
   const shareViaFacebook = () => {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageUrl)}`, '_blank');
@@ -21,9 +21,9 @@ const ImageShareButtons = ({ imageUrl }) => {
 
   return (
     <div>
-      <button onClick={shareViaFacebook}>Share via Facebook</button>
-      <button onClick={shareViaWhatsApp}>Share via WhatsApp</button>
-      <button onClick={copyImageLink}>Copy Image Link</button>
+      <Button onClick={shareViaFacebook}>Share via Facebook</Button>
+      <Button onClick={shareViaWhatsApp}>Share via WhatsApp</Button>
+      <Button onClick={copyImageLink}>Copy Image Link</Button>
     </div>
   );
 };

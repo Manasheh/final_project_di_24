@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.social-container {
+    width: 30px;
+    height: 30px;
+    margin: 20px;
+
+}
+.social-container img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(0.6);
+}

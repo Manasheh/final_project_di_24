@@ -7,6 +7,9 @@ import LoginRegister from './components/LoginRegister';
 import { useState, createContext } from 'react';
 import Auth from './auth/Auth';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Footer';
+import About from './components/About';
 
 export const AuthContext = createContext();
 
@@ -18,12 +21,14 @@ function App() {
       <div>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<About />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LoginRegister page="Login" />} />
           <Route path="/register" element={<LoginRegister page="Register" />} />
           <Route path="/dashboard" element={<Auth><Dashboard /></Auth>} />
           <Route path="/image/:imageId" element={<ViewImage />} /> 
         </Routes>
+        <Footer />
       </div>
     </AuthContext.Provider>
   );

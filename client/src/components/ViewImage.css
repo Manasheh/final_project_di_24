@@ -1,0 +1,46 @@
+.view-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .full-size-image {
+    width: 100%;
+    /* max-width: 800px; Set a maximum width for the image */
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .description-container {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .description-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .public-checkbox {
+    margin-bottom: 10px;
+  }
+  
+  .save-button {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .delete-icon,
+  .download-icon {
+    font-size: 24px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  

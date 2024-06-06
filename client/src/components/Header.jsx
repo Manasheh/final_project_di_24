@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Button, Stack, Box } from '@mui/material';
+import { Navbar, Nav, Button, Container } from 'react-bootstrap';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import About from './About';
+
 import { AuthContext } from '../App';
 
 const Header = () => {
@@ -19,19 +23,33 @@ const Header = () => {
   };
 
   return (
-    <Box sx={{ p: 2, borderBottom: 1, borderColor: 'divider' }}>
-      <Stack spacing={2} direction="row">
-        <Button component={Link} to="/">Home</Button>
-        {!token && <Button component={Link} to="/login">Login</Button>}
-        {!token && <Button component={Link} to="/register">Register</Button>}
-        {token && <Button component={Link} to="/dashboard">Dashboard</Button>}
-        {token && <Button onClick={handleLogout}>Logout</Button>}
-      </Stack>
-    </Box>
+    <Navbar bg="light" expand="lg" style={{marginBottom:'1.5rem'}}>
+      <Container>
+      {/* <Navbar.Brand as={Link} to="/">Fam.Nest</Navbar.Brand>
+       */}
+       <Nav.Link as={Link} to="/">
+        <FontAwesomeIcon icon={faCamera} size="2x" />  
+       </Nav.Link>
+       
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ms-auto">
+          
+          <Nav.Link as={Link} className='nav-btn' to="/home">Home</Nav.Link>
+          <Nav.Link as={Link} className='nav-btn' to="/">About</Nav.Link>
+          {!token && <Nav.Link as={Link} className='nav-btn' to="/login">Login</Nav.Link>}
+          {!token && <Nav.Link as={Link} className='nav-btn' to="/register">Register</Nav.Link>}
+          {token && <Nav.Link as={Link} className='nav-btn' to="/dashboard">Dashboard</Nav.Link>}
+        </Nav>
+        {token && <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>}
+      </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
 export default Header;
+
 
 
 

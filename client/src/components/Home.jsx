@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { saveAs } from 'file-saver'; // Import the saveAs function from file-saver
+import { Button, Container } from 'react-bootstrap';
 import { AuthContext } from '../App';
+// import './Home.css'; // Import CSS file for custom styling
 
 const Home = () => {
   const [publicImages, setPublicImages] = useState([]);
@@ -35,27 +36,195 @@ const Home = () => {
         responseType: 'blob' // Set responseType to 'blob' to download binary data
       });
       // Use FileSaver.js to save the blob as a file
-      saveAs(response.data, 'image.jpg');
+      const blob = new Blob([response.data], { type: 'image/jpeg' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'image.jpg');
+      document.body.appendChild(link);
+      link.click();
     } catch (error) {
       console.log('Error downloading image:', error);
     }
   };
 
   return (
-    <div>
-      <h2>Public Images</h2>
-      {publicImages.map(image => (
-        <div key={image.id}>
-          <img src={image.image_url} alt={`Image ${image.id}`} />
-          <p>Description: {image.description}</p>
-          <button onClick={() => handleDownload(image.image_url)}>Download</button> {/* Add a download button for each image */}
+    <Container className="home-container">
+  <div className="heading-container">
+    <h2 className='heading'>Public Images</h2>
+  </div>
+  <div className="image-container">
+    {publicImages.map(image => (
+      <div key={image.id} className="image-wrapper-home">
+        <div className='image-container-home'>
+          <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
+          {/* <p>Description: {image.description}</p> */}
         </div>
-      ))}
-    </div>
+        <div className="download-button-container">
+          <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>Download</Button>
+        </div>
+      </div>
+    ))}
+  </div>
+</Container>
+
   );
 };
 
 export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect, useContext } from 'react';
+// import axios from 'axios';
+// import { Button, Container } from 'react-bootstrap';
+// import { AuthContext } from '../App';
+// // import './Home.css'; // Import CSS file for custom styling
+
+// const Home = () => {
+//   const [publicImages, setPublicImages] = useState([]);
+//   const { token } = useContext(AuthContext);
+
+//   useEffect(() => {
+//     getPublicImages();
+//   }, []);
+
+//   const getPublicImages = async () => {
+//     try {
+//       const response = await axios.get('http://localhost:8080/getUserImage', {
+//         headers: {
+//           'x-access-token': token
+//         },
+//         withCredentials: true
+//       });
+
+//       // Filter the images to only include those marked as public
+//       const publicImages = response.data.filter(image => image.isPublic === true || image.isPublic === 'true');
+//       setPublicImages(publicImages);
+//     } catch (error) {
+//       console.log(error.response.data.message);
+//     }
+//   };
+
+//   const handleDownload = async (imageUrl) => {
+//     try {
+//       // Make a GET request to the image URL to download it
+//       const response = await axios.get(imageUrl, {
+//         responseType: 'blob' // Set responseType to 'blob' to download binary data
+//       });
+//       // Use FileSaver.js to save the blob as a file
+//       const blob = new Blob([response.data], { type: 'image/jpeg' });
+//       const url = window.URL.createObjectURL(blob);
+//       const link = document.createElement('a');
+//       link.href = url;
+//       link.setAttribute('download', 'image.jpg');
+//       document.body.appendChild(link);
+//       link.click();
+//     } catch (error) {
+//       console.log('Error downloading image:', error);
+//     }
+//   };
+
+//   return (
+//     <Container className="image-container">
+//       <div>
+//         <h2 className='heading'>Public Images</h2>
+//       </div>
+//       {publicImages.map(image => (
+//         <div key={image.id} className="image-wrapper">
+//           <div className="image">
+//             <img src={image.image_url} alt={`Image ${image.id}`} />
+//             <p>Description: {image.description}</p>
+//           </div>
+//           <Button variant="primary" onClick={() => handleDownload(image.image_url)}>Download</Button>
+//         </div>
+//       ))}
+//     </Container>
+//   );
+// };
+
+// export default Home;
+
+
+
+
+
+
+
+
+
+
+
+//wednesday 9th night june 2021
+// import React, { useState, useEffect, useContext } from 'react';
+// import axios from 'axios';
+// import { saveAs } from 'file-saver'; // Import the saveAs function from file-saver
+// import { AuthContext } from '../App';
+// import Button from react-bootstrap/Button;
+
+// const Home = () => {
+//   const [publicImages, setPublicImages] = useState([]);
+//   const { token } = useContext(AuthContext);
+
+//   useEffect(() => {
+//     getPublicImages();
+//   }, []);
+
+//   const getPublicImages = async () => {
+//     try {
+//       const response = await axios.get('http://localhost:8080/getUserImage', {
+//         headers: {
+//           'x-access-token': token
+//         },
+//         withCredentials: true
+//       });
+
+//       // Filter the images to only include those marked as public
+//       const publicImages = response.data.filter(image => image.isPublic === true || image.isPublic === 'true');
+//       setPublicImages(publicImages);
+//     } catch (error) {
+//       console.log(error.response.data.message);
+//     }
+//   };
+
+//   const handleDownload = async (imageUrl) => {
+//     try {
+//       // Make a GET request to the image URL to download it
+//       const response = await axios.get(imageUrl, {
+//         responseType: 'blob' // Set responseType to 'blob' to download binary data
+//       });
+//       // Use FileSaver.js to save the blob as a file
+//       saveAs(response.data, 'image.jpg');
+//     } catch (error) {
+//       console.log('Error downloading image:', error);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2>Public Images</h2>
+//       {publicImages.map(image => (
+//         <div key={image.id}>
+//           <img src={image.image_url} alt={`Image ${image.id}`} />
+//           <p>Description: {image.description}</p>
+//           <button onClick={() => handleDownload(image.image_url)}>Download</button> {/* Add a download button for each image */}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default Home;
 
 
 
