@@ -6,6 +6,7 @@ import { Form, Button, Image, Container } from 'react-bootstrap';
 import { faTrash, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { saveAs } from 'file-saver'; // Import the saveAs function from file-saver
+import './Dashboard.css';
 
 const Dashboard = () => {
     const { token } = useContext(AuthContext);
@@ -97,22 +98,22 @@ const Dashboard = () => {
     };
 
     return (
-        <Container>
+        <Container className='dashboard-container'>
             {/* Upload form */}
             <Form onSubmit={handleSubmit}>
-    <Form.Group controlId="formFile" className="mb-3">
-      <Form.Control type="file" onChange={handleFileChange} />
-    </Form.Group>
-    <Form.Group controlId="description">
-      <Form.Control type="text" placeholder="Enter description" value={description} onChange={handleDescriptionChange} />
-    </Form.Group>
-    <Form.Group controlId="isPublic">
-      <Form.Check type="checkbox" label="Public" checked={isPublic} onChange={handleIsPublicChange} />
-    </Form.Group>
-    <div className="upload-button-container">
-      <Button variant="primary" type="submit">Upload</Button>
-    </div>
-  </Form>
+            <Form.Group controlId="formFile" className="mb-3">
+            <Form.Control type="file" onChange={handleFileChange} />
+            </Form.Group>
+            <Form.Group controlId="description">
+            <Form.Control type="text" placeholder="Enter description" value={description} onChange={handleDescriptionChange} />
+            </Form.Group>
+            <Form.Group controlId="isPublic">
+            <Form.Check type="checkbox" label="Public" checked={isPublic} onChange={handleIsPublicChange} />
+            </Form.Group>
+            <div className="upload-button-container">
+            <Button variant="primary" type="submit">Upload</Button>
+            </div>
+            </Form>
             {message && <div>{message}</div>}
 
             <h2 className='heading'>Dashboard</h2>
