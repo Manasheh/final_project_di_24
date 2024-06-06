@@ -16,7 +16,6 @@
   width: 180px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 .image-wrapper-home {
   /* width: 170px; */
@@ -25,6 +24,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+
   
 }
 .image-container-home {
