@@ -18,7 +18,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>
-      <div className='body-container'>
+      <div>
         <Header />
         <Routes>
           <Route path="/" element={<About />} />
