@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import { AuthContext } from '../App';
-// import './Home.css'; // Import CSS file for custom styling
+import './Home.css'; // Import CSS file for custom styling
 
 const Home = () => {
   const [publicImages, setPublicImages] = useState([]);

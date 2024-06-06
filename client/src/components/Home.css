@@ -1,0 +1,26 @@
+.home-container {
+  width: 100%;
+  min-height: 100vh;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+.image-wrapper-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.image-container-home {
+  width: 170px;
+  height: 150px;
+}
+
+.image  {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
