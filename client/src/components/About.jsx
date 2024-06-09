@@ -1,18 +1,14 @@
 import React from 'react';
 import './About.css';
-import { Image } from 'react-bootstrap';
+// Import Image component from react-bootstrap
+import Img from '../../public/images/fam.avif';
 
 function About() {
   return (
     <div className="about-container">
       <div className="about-img">
         {/* Use Image component from React-Bootstrap */}
-        {/* <img src={Img} fluid alt="Happy Family" /> */}
-        <Image 
-        src="https://unsplash.com/photos/people-standing-on-shore-during-golden-hour-V3dHmb1MOXM"
-        fluid 
-        alt="Happy Family" 
-      />
+        <img src={Img} fluid alt="Happy Family" />
       </div>
       <div className="about-bg">
         <h4>
