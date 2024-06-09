@@ -6,7 +6,7 @@ body {
 .about-container {
     width: 100vw;
     /* min-height: 100vh; */
-    padding: 1% 0;
+    padding: 0 2%;
 }
 
 .about-img {
