@@ -1,12 +1,15 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+
 const ImageShareButtons = ({ imageUrl }) => {
   const shareViaFacebook = () => {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(imageUrl)}`, '_blank');
   };
 
   const shareViaWhatsApp = () => {
-    window.open(`whatsapp://send?text=Check out this image: ${encodeURIComponent(imageUrl)}`, '_blank');
+    const whatsappMessage = `Check out this image: ${imageUrl}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const copyImageLink = () => {
@@ -29,3 +32,4 @@ const ImageShareButtons = ({ imageUrl }) => {
 };
 
 export default ImageShareButtons;
+
