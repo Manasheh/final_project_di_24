@@ -6,13 +6,13 @@ body {
 .about-container {
     width: 100vw;
     /* min-height: 100vh; */
-    padding: 4%;
+    padding: 1% 0;
 }
 
 .about-img {
 
     object-fit: cover;
-    padding-bottom: 4%;
+    padding-bottom: 2%;
 }
 
 .about-img img {
