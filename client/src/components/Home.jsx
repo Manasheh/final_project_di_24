@@ -61,7 +61,9 @@ const Home = () => {
               <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
             </div>
             <div className="button-container">
-              <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>Download</Button>
+              <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>
+                <i className="bi bi-download"></i> {/* Download icon */}
+              </Button>
               <ImageShareButtons imageUrl={image.image_url} /> {/* Integrate ImageShareButtons component for each image */}
             </div>
           </div>
@@ -72,6 +74,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 
