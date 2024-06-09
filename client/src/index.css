@@ -95,12 +95,6 @@
   cursor: pointer;
 }
 
-/* center the upload button  */
-/* .upload-form-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-} */
 .upload-button-container {
   display: flex;
   justify-content: center;
