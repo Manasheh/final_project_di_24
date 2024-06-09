@@ -8,14 +8,14 @@
   border-radius: 50%;
 }
 
-.a.nav-btn.nav-link {
+.nav-btn {
   padding: 0.4rem 0.6rem;
   background-color: black;
   color: white;
   font-size: 20px;
 
 }
-.a.nav-btn.nav-link:hover {
+.nav-btn:hover {
   background-color: white;
   color: black;
 }
