@@ -10,16 +10,17 @@
 
 .nav-btn {
   padding: 0.4rem 0.8rem;
-  background-color: black;
-  color: white;
+  background-color: black !important;
+  color: white !important;
   font-size: 20px;
   margin: 0 0.5rem;
   transition: all 0.3s;
 }
 .nav-btn:hover, .nav-btn:active {
-  background-color: white;
-  color: black;
+  background-color: white !important;
+color: black !important;
 }
+
 
 .image-container {
   display: flex;
