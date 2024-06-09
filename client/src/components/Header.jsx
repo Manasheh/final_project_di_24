@@ -28,7 +28,9 @@ const Header = () => {
       {/* <Navbar.Brand as={Link} to="/">Fam.Nest</Navbar.Brand>
        */}
        <Nav.Link as={Link} to="/">
+       <div className='logo-container'>
         <FontAwesomeIcon icon={faCamera} size="2x" />  
+        </div>
        </Nav.Link>
        
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
