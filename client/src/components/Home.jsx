@@ -2,14 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import { AuthContext } from '../App';
-import {
-  FacebookShareButton,
-  WhatsappShareButton,
-  FacebookIcon,
-  WhatsappIcon,
-  EmailShareButton,
-  EmailIcon
-} from 'react-share';
+
 import './Home.css'; // Import CSS file for custom styling
 
 const Home = () => {
@@ -58,33 +51,24 @@ const Home = () => {
 
   return (
     <Container className="home-container">
-      <div className="heading-container">
-        <h2 className='heading'>Public Images</h2>
+  <div className="heading-container">
+    <h2 className='heading'>Public Images</h2>
+  </div>
+  <div className="image-container">
+    {publicImages.map(image => (
+      <div key={image.id} className="image-wrapper-home">
+        <div className='image-container-home'>
+          <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
+          {/* <p>Description: {image.description}</p> */}
+        </div>
+        <div className="download-button-container">
+          <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>Download</Button>
+        </div>
       </div>
-      <div className="image-container">
-        {publicImages.map(image => (
-          <div key={image.id} className="image-wrapper-home">
-            <div className='image-container-home'>
-              <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
-            </div>
-            <div className="button-container">
-              <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>Download</Button>
-              <div className="share-buttons">
-                <FacebookShareButton url={image.image_url} quote={image.description}>
-                  <FacebookIcon size={32} round />
-                </FacebookShareButton>
-                <WhatsappShareButton url={image.image_url} title={image.description}>
-                  <WhatsappIcon size={32} round />
-                </WhatsappShareButton>
-                <EmailShareButton url={image.image_url} subject="Check out this image" body={image.description}>
-                  <EmailIcon size={32} round />
-                </EmailShareButton>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Container>
+    ))}
+  </div>
+</Container>
+
   );
 };
 
