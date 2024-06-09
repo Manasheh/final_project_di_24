@@ -16,10 +16,11 @@
   margin: 0 0.5rem;
   transition: all 0.3s;
 }
-.nav-btn:hover {
+.nav-btn:hover, .nav-btn:active {
   background-color: white;
   color: black;
 }
+
 .image-container {
   display: flex;
   justify-content: center;
