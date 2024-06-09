@@ -9,11 +9,12 @@
 }
 
 .nav-btn {
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 0.8rem;
   background-color: black;
   color: white;
   font-size: 20px;
-
+  margin: 0 0.5rem;
+  transition: all 0.3s;
 }
 .nav-btn:hover {
   background-color: white;
