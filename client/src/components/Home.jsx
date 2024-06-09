@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import { AuthContext } from '../App';
@@ -47,6 +48,9 @@ const Home = () => {
       console.log('Error downloading image:', error);
     }
   };
+  const handleImageClick = (imageId) => {
+    navigate(`/image/${imageId}`);
+};
 
   return (
     <Container className="home-container">
@@ -59,6 +63,7 @@ const Home = () => {
         <div className='image-container-home'>
           <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
           {/* <p>Description: {image.description}</p> */}
+          onClick={() => handleImageClick(image_url)}
         </div>
         <div className="download-button-container">
           <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>Download</Button>
