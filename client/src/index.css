@@ -16,10 +16,17 @@
   margin: 0 0.5rem;
   transition: all 0.3s;
 }
+
 .nav-btn:hover, .nav-btn:active {
   background-color: white !important;
-color: black !important;
+  color: black !important;
 }
+
+.nav-btn.active {
+  background-color: white !important;
+  color: black !important;
+}
+
 
 
 .image-container {
