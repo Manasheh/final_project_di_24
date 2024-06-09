@@ -7,6 +7,8 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
+
   }
 .image-wrapper-home {
   display: flex;
@@ -25,7 +27,4 @@
   width: 170px;
   height: 150px;
   object-fit: cover;
-}
-.button-container {
-  margin-bottom: 1rem;
 }

@@ -41,7 +41,7 @@ const Home = () => {
             <div className='image-container-home'>
               <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
             </div>
-            <div className="button-container">
+            <div>
               <ImageShareButtons imageUrl={image.image_url} /> {/* Integrate ImageShareButtons component for each image */}
             </div>
           </div>
