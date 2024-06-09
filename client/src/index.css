@@ -38,7 +38,7 @@
 
 .image-wrapper {
   position : relative;
-  width: 180px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   gap: 10px;
