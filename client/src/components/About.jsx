@@ -1,6 +1,5 @@
 import React from 'react';
 import './About.css';
-// Import Image component from react-bootstrap
 import Img from '../../public/images/fam.avif';
 
 function About() {
