@@ -40,7 +40,6 @@ app.get("*", (req, res) => {
 
 //uploading images to s3 bucket and storing the url in the database(images) table and also the description of the image and the time it was uploaded.
 
-//date 30/08/2021, i will fetch the images, desc, time from the database and display them on the frontend
 
 
 

@@ -1,16 +1,5 @@
 const { db } = require('../config/config.js');
 
-//getallusers
-// const _all = async () => {
-//     try {
-//         const users = await db('gallaryusers').select('id', 'email').orderBy('id');
-//         // return users;
-//         console.log(users);
-//     } catch (error) {
-//         console.log({message: 'error in get all users'});
-//         throw new Error('Could not get all users')
-//     }
-// }
 
 const _uploadSingle = async ({ key, mimetype, location, originalname, description, userId, isPublic }) => {
     try {
@@ -107,12 +96,3 @@ const _login = async (email) => {
 
 
 
-
-
-// const { db } = require('../config/config.js')
-
-// const _uploadSingle = async ({key, mimetype, location, originalname}) => {
-//     return db('images').insert({key, mimetype, location, originalname}, ['key', 'mimetype', 'location', 'originalname'])
-// }
-
-// module.exports = { _uploadSingle }
