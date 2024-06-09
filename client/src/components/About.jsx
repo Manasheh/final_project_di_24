@@ -12,11 +12,9 @@ function About() {
       </div>
       <div className="about-bg">
         <h4>
-          <em>
             Welcome to the Family Nest platform! This platform is dedicated to providing you with a seamless experience to store, share, download, and delete images. Whether you're an avid photographer or simply love capturing moments, this platform empowers you to curate your visual stories effortlessly.
 
             With its intuitive interface, you can upload your images with ease, organize them efficiently, and share your unique perspective with the world. Need to access your images on the go? No problem! This platform ensures your images are accessible anytime, anywhere.
-          </em>
         </h4>
       </div>
     </div>
