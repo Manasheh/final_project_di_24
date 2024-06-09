@@ -32,4 +32,3 @@ const ImageShareButtons = ({ imageUrl }) => {
 };
 
 export default ImageShareButtons;
-
