@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { FaFacebook, FaWhatsapp, FaCopy } from 'react-icons/fa'; // Import Font Awesome icons
+import { FaFacebook, FaWhatsapp, FaCopy, FaDownload } from 'react-icons/fa'; // Import Font Awesome icons
 
 const ImageShareButtons = ({ imageUrl }) => {
   const shareViaFacebook = () => {
@@ -23,14 +23,24 @@ const ImageShareButtons = ({ imageUrl }) => {
       });
   };
 
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = imageUrl;
+    link.setAttribute('download', 'image.jpg');
+    document.body.appendChild(link);
+    link.click();
+  };
+
   return (
     <div>
       <Button onClick={shareViaFacebook} variant="light"><FaFacebook /></Button>
       <Button onClick={shareViaWhatsApp} variant="light"><FaWhatsapp /></Button>
       <Button onClick={copyImageLink} variant="light"><FaCopy /></Button>
+      <Button onClick={handleDownload} variant="light"><FaDownload /></Button>
     </div>
   );
 };
 
 export default ImageShareButtons;
+
 

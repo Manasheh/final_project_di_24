@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { AuthContext } from '../App';
 import ImageShareButtons from './ImageShareButtons'; // Import the ImageShareButtons component
 import './Home.css'; // Import CSS file for custom styling
@@ -30,25 +30,6 @@ const Home = () => {
     }
   };
 
-  const handleDownload = async (imageUrl) => {
-    try {
-      // Make a GET request to the image URL to download it
-      const response = await axios.get(imageUrl, {
-        responseType: 'blob' // Set responseType to 'blob' to download binary data
-      });
-      // Use FileSaver.js to save the blob as a file
-      const blob = new Blob([response.data], { type: 'image/jpeg' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'image.jpg');
-      document.body.appendChild(link);
-      link.click();
-    } catch (error) {
-      console.log('Error downloading image:', error);
-    }
-  };
-
   return (
     <Container className="home-container">
       <div className="heading-container">
@@ -61,9 +42,6 @@ const Home = () => {
               <img src={image.image_url} alt={`Image ${image.id}`} className="image" />
             </div>
             <div className="button-container">
-              <Button variant="primary" size="sm" className='home-button' onClick={() => handleDownload(image.image_url)}>
-                <i className="bi bi-download"></i> {/* Download icon */}
-              </Button>
               <ImageShareButtons imageUrl={image.image_url} /> {/* Integrate ImageShareButtons component for each image */}
             </div>
           </div>
@@ -74,6 +52,7 @@ const Home = () => {
 };
 
 export default Home;
+
 
 
 
