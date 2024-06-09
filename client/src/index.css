@@ -109,3 +109,22 @@
 .download-button-container {
   margin-top: 10px;
 }
+
+
+/* New styles for share buttons */
+.share-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Ensuring button container is styled properly */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.home-button {
+  flex-shrink: 0;
+}
