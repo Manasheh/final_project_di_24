@@ -118,19 +118,19 @@ const Dashboard = () => {
 
             <h2 className='heading'>Dashboard</h2>
             <div className='image-container'>
-  {/* Render user's images */}
-  {userImages.map((image) => (
-    <div key={image.id} className='image-wrapper'>
-      <div className="image-wrapper-relative">
-        <Image src={image.image_url} className='image' alt="User Image" onClick={() => handleImageClick(image.id)} />
-        <div className="icon-container">
-          <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(image.id)} />
-          <FontAwesomeIcon icon={faDownload} onClick={() => handleDownload(image.image_url)} />
-        </div>
-      </div>
-      <p>Description: {image.description}</p>
-    </div>
-  ))}
+            {/* Render user's images */}
+            {userImages.map((image) => (
+                <div key={image.id} className='image-wrapper'>
+                <div className="image-wrapper-relative">
+                    <Image src={image.image_url} className='image' alt="User Image" onClick={() => handleImageClick(image.id)} />
+                    <div className="icon-container">
+                    <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(image.id)} />
+                    <FontAwesomeIcon icon={faDownload} onClick={() => handleDownload(image.image_url)} />
+                    </div>
+                </div>
+                <p>Description: {image.description}</p>
+                </div>
+            ))}
 </div>
         </Container>
     );

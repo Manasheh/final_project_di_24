@@ -60,10 +60,22 @@ const updateDescription = async (req, res) => {
     }
 }
 // Get All user Images
+// const getUserImages = async (req, res) => {
+//     const userId = req.userId; // Use req.userId instead of req.user_id
+//     try {
+//         const rows = await _getUserImages(userId);
+//         res.status(200).json(rows);
+//     } catch (error) {
+//         console.error('Error getting images:', error);
+//         res.status(500).json({ message: 'Error from controller' });
+//     }
+// };
+
 const getUserImages = async (req, res) => {
-    // console.log(req);
-    const userId = req.userId; // Use req.userId instead of req.user_id
+    const userId = req.userId;
+
     try {
+        // Fetch all user and public images
         const rows = await _getUserImages(userId);
         res.status(200).json(rows);
     } catch (error) {
@@ -72,16 +84,11 @@ const getUserImages = async (req, res) => {
     }
 };
 
+
 // Delete Image
 const deleteImage = async (req, res) => {
     try {
         const { id } = req.params;
-        //delete from s3 bucket
-        // const s3Params = {
-        //     Bucket: 'usergallary',
-        //     Key: 
-        // };
-        // await s3.send(new DeleteObjectCommand(s3Params));
         const row = await _deleteImage(id);
         res.status(200).json(row);
     } catch (error) {
@@ -100,7 +107,7 @@ const register = async (req, res) => {
         const newUser = await _register({ username, email: lowermail, password: hashedPassword });
         res.json(newUser);
     } catch (error) {
-        console.error('Registration error:', error);
+        // console.error('Registration error:', error);
         res.status(500).json({ message: 'Register failed in controller' });
     }
 };
@@ -126,7 +133,7 @@ const login = async (req, res) => {
             ACCESS_TOKEN_SECRET,
             { expiresIn: '120s' }
         );
-        console.log(accessToken);
+        // console.log(accessToken);
         res.cookie('token', accessToken, {
             httpOnly: true,
             maxAge: 2 * 60 * 1000,
@@ -134,7 +141,7 @@ const login = async (req, res) => {
 
         res.json({ token: accessToken });
     } catch (error) {
-        console.error('Login error:', error);
+        // console.error('Login error:', error);
         res.status(500).json({ message: 'Login failed from controller' });
     }
 };

@@ -12,7 +12,7 @@ router.post('/login', login);
 
 // Verify Token (Protected Route)
 router.get('/verify', verifyToken, (req, res) => {
-    res.json({ message: 'Success' });
+    res.json({ message: 'Success' }); // If the token is valid, return success message to the client 
 });
 
 // Upload image to S3 and store the URL in the database

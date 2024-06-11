@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser'); // Add this to parse cookies in the request headers 
 const filesRouter = require('./routes/upload.route.js');
-const path = require('path');
+const path = require('path'); // Add this to resolve paths in Node.js
 dotenv.config();
 
 const PORT = process.env.PORT || 8080;
@@ -40,34 +40,3 @@ app.get("*", (req, res) => {
 
 //uploading images to s3 bucket and storing the url in the database(images) table and also the description of the image and the time it was uploaded.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const express = require('express');
-// const cors = require('cors')
-// const dotenv = require('dotenv');
-// const files_router = require('./routes/upload.route.js')
-// dotenv.config();
-
-// const PORT = process.env.PORT || 8080;
-// const app = express();
-
-// //middleware
-// app.use(cors());
-
-// app.use('/', files_router)
-
-// app.listen(PORT, () => {
-//     console.log('Up and running at', PORT);
-// })

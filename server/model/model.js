@@ -45,16 +45,31 @@ const _updateDescription = async (id, description, isPublic) => {
         throw new Error('Database error updating description');
     }
 }
+// const _getUserImages = async (userId) => {
+//     try {
+//         //fetch image associated with the user id
+//         const rows  = await db('images').select('id', 'image_url', 'description', 'isPublic').where({user_id: userId});
+//         return rows;
+//     } catch (error) {
+//         console.error('Error getting images:', error);  // Log the error
+//         throw new Error('error from model to upload file');  // Throw an error
+//     }
+// }
 const _getUserImages = async (userId) => {
     try {
-        //fetch image associated with the user id
-        const rows  = await db('images').select('id', 'image_url', 'description', 'isPublic').where({user_id: userId});
+        // Fetch images associated with the user ID and also images marked as public
+        const rows = await db('images')
+            .select('id', 'image_url', 'description', 'isPublic')
+            .where({ user_id: userId })
+            .orWhere({ isPublic: true });
+        
         return rows;
     } catch (error) {
-        console.error('Error getting images:', error);  // Log the error
-        throw new Error('error from model to upload file');  // Throw an error
+        console.error('Error getting images:', error);
+        throw new Error('Error from model to upload file');
     }
-}
+};
+
 
 const _deleteImage = async (id) => {
     return db('images').where({ id }).del();
