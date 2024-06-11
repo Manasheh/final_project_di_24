@@ -15,16 +15,18 @@
   flex-direction: column;
   align-items: center;
   margin: 1.3rem;
-  width: 170px;
-  height: 150px;
+  /* width: 170px; */
+  /* height: 150px; */
+  width: 200px; 
+  height: 170px;
 }
 .image-container-home {
-  width: 170px;
-  height: 150px;
+  width: 100%;
+  height: 140px; 
 }
 
 .image  {
-  width: 170px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
